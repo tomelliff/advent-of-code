@@ -2312,7 +2312,7 @@ input = """
 2464
 """
 
-def part_one():
+def _get_sorted_elf_calories_list_from_input():
     list_of_elves_with_their_calories = input.strip().split("\n\n")
     # print(list_of_elves_with_their_calories[0])
 
@@ -2324,8 +2324,37 @@ def part_one():
         elf_calories_list.append(elf_calories)
         # print(elf_calories_list)
 
-    print(sorted(elf_calories_list)[-1])
+    return sorted(elf_calories_list, reverse=True)
+
+
+def part_one():
+    elf_calories_list = _get_sorted_elf_calories_list_from_input()
+
+    print(elf_calories_list[0])
+
+
+def part_two():
+    """
+    --- Part Two ---
+    By the time you calculate the answer to the Elves' question, they've already realized that the Elf carrying the
+    most Calories of food might eventually run out of snacks.
+
+    To avoid this unacceptable situation, the Elves would instead like to know the total Calories carried by the top
+    three Elves carrying the most Calories. That way, even if one of those Elves runs out of snacks, they still have
+    two backups.
+
+    In the example above, the top three Elves are the fourth Elf (with 24000 Calories), then the third Elf (with
+    11000 Calories), then the fifth Elf (with 10000 Calories). The sum of the Calories carried by these three elves is
+    45000.
+
+    Find the top three Elves carrying the most Calories. How many Calories are those Elves carrying in total?
+    """
+    elf_calories_list = _get_sorted_elf_calories_list_from_input()
+
+    # print(elf_calories_list[0:3])
+    print(sum(elf_calories_list[0:3]))
 
 
 if __name__ == "__main__":
-    part_one()
+    # part_one()
+    part_two()
